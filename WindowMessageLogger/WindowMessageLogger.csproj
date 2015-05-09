@@ -75,8 +75,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Identifiers.cs" />
+    <Compile Include="INamedPipeClient.cs" />
+    <Compile Include="IShellHookManager.cs" />
+    <Compile Include="NamedPipeClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellHookManager.cs" />
+    <Compile Include="WinApi.cs" />
+    <Compile Include="WinApiException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShellHookLauncher32\ShellHookLauncher32.csproj">
