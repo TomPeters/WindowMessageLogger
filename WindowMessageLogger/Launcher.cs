@@ -8,7 +8,9 @@ namespace WindowMessageLogger
         {
             HiddenForm form = new HiddenForm() { Visible = false, ShowInTaskbar = false };
             IntPtr forwardingWindowPtr = form.Handle;
-            var shellHookManager = new ShellHookManager(forwardingWindowPtr);
+            ShellHookManager shellHookManager = new ShellHookManager(forwardingWindowPtr);
+            shellHookManager.RegisterHooks();
+            Console.ReadKey();
         } 
     }
 }
