@@ -96,13 +96,18 @@
     <ProjectReference Include="..\ShellHookLauncher32\ShellHookLauncher32.csproj">
       <Project>{188af915-6397-4d4d-a63a-33637e3bd137}</Project>
       <Name>ShellHookLauncher32</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\ShellHookLauncher64\ShellHookLauncher64.csproj">
       <Project>{fdcdfdc9-e683-46e9-9205-ea5c4760280c}</Project>
       <Name>ShellHookLauncher64</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /B /Y /V "$(SolutionDir)$(ConfigurationName)" "$(ProjectDir)$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
