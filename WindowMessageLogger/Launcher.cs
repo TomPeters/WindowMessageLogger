@@ -11,6 +11,7 @@ namespace WindowMessageLogger
             ShellHookManager shellHookManager = new ShellHookManager(forwardingWindowPtr);
             shellHookManager.RegisterHooks();
             Console.ReadKey();
+            shellHookManager.UnregisterHooks();
         } 
     }
 }
