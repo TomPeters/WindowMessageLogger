@@ -9,13 +9,30 @@ namespace ShellHookLauncher
     {
         static void Main(string[] args)
         {
+            try
+            {
+                Run();
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log - " + ShellHookHelper.DllFileName + ".txt", ex.Message + ex.StackTrace);
+            }
+        }
+
+        private static void Run()
+        {
             SetDllDirectory(Directory.GetCurrentDirectory());
+            File.WriteAllText("log - " + ShellHookHelper.DllFileName + ".txt", "setup hook");
             IntPtr wndProcHook = ShellHookHelper.SetupWndProcHook();
             //ShellHookHelper.SetupGetMsgHook();
-
-            WaitForTerminationMessage();
-
-            UnhookWindowsHookEx(wndProcHook);
+            try
+            {
+                WaitForTerminationMessage();
+            }
+            finally
+            {
+                UnhookWindowsHookEx(wndProcHook);
+            }
         }
 
         private static void WaitForTerminationMessage()
