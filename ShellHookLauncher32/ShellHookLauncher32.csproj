@@ -93,7 +93,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /B /Y /V "$(ProjectDir)$(OutDir)" "$(SolutionDir)$(ConfigurationName)"</PostBuildEvent>
+    <PostBuildEvent>copy /B /Y /V "$(SolutionDir)Dlls\$(ConfigurationName)" "$(TargetDir)" 
+copy /B /Y /V "$(TargetDir)" "$(SolutionDir)$(ConfigurationName)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
