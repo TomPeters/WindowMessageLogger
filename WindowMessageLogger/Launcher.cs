@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace WindowMessageLogger
 {
@@ -8,10 +9,18 @@ namespace WindowMessageLogger
         {
             HiddenForm form = new HiddenForm() { Visible = false, ShowInTaskbar = false };
             IntPtr forwardingWindowPtr = form.Handle;
+            Console.WriteLine("Pointer: " + forwardingWindowPtr);
             ShellHookManager shellHookManager = new ShellHookManager(forwardingWindowPtr);
             shellHookManager.RegisterHooks();
-            Console.ReadKey();
-            shellHookManager.UnregisterHooks();
+            try
+            {
+                ApplicationContext context = new WindowsMessageLoggerApplicationContext();
+                Application.Run(context);
+            }
+            finally
+            {
+                shellHookManager.UnregisterHooks();
+            }
         } 
     }
 }

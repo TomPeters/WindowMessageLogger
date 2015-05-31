@@ -7,7 +7,8 @@ namespace WindowMessageLogger
     {
         protected override void DefWndProc(ref Message m)
         {
-            Console.WriteLine(m.HWnd + ": " + m.LParam);
+            //Console.WriteLine("Message received");
+            //Console.WriteLine(m.HWnd + ": " + m.LParam);
             base.DefWndProc(ref m);
         }
     }

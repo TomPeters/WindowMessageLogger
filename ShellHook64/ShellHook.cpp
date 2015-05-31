@@ -1,7 +1,4 @@
 #include <Windows.h>
-#include <iostream>
-#include <fstream>
-using namespace std;
 
 HINSTANCE g_appInstance = NULL;
 UINT g_customWindowMessage = NULL;
@@ -11,6 +8,7 @@ HHOOK hookCallWndProc = NULL;
 HHOOK hookCallGetMsg = NULL;
 
 static LRESULT CALLBACK WndProcCallback(int code, WPARAM wparam, LPARAM lparam) {
+    
     if(code >= 0) {
     	//Move this out of the callback
     	UINT g_customWindowMessage = RegisterWindowMessage("PANELESS_7F75020C-34E7-45B4-A5F8-6827F9DB7DE2");

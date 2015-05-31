@@ -71,6 +71,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -91,6 +92,7 @@
     <Compile Include="ShellHookManager.cs" />
     <Compile Include="WinApi.cs" />
     <Compile Include="WinApiException.cs" />
+    <Compile Include="WindowsMessageLoggerApplicationContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShellHookLauncher32\ShellHookLauncher32.csproj">
@@ -103,6 +105,9 @@
       <Name>ShellHookLauncher64</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="assets\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
