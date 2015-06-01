@@ -101,6 +101,9 @@
     <Compile Include="ShellHookManager.cs" />
     <Compile Include="WinApi.cs" />
     <Compile Include="WinApiException.cs" />
+    <Compile Include="WindowLogger.cs" />
+    <Compile Include="WindowRepository.cs" />
+    <Compile Include="WindowPropertiesFetcher.cs" />
     <Compile Include="WindowsMessageLoggerApplicationContext.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,14 @@ namespace WindowMessageLogger
                 .WriteTo.ColoredConsole()
                 .WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();
-            HiddenForm form = new HiddenForm(logger) { Visible = false, ShowInTaskbar = false };
+            WindowRepository windowRepository = new WindowRepository();
+            WindowLogger windowLogger = new WindowLogger(new WindowPropertiesFetcher(), logger);
+            foreach (IntPtr hWnd in windowRepository.AllWindows)
+            {
+                windowLogger.LogWindow(hWnd);
+            }
+
+            HiddenForm form = new HiddenForm(logger, windowRepository, windowLogger) { Visible = false, ShowInTaskbar = false };
             IntPtr forwardingWindowPtr = form.Handle;
             Console.WriteLine("Pointer: " + forwardingWindowPtr);
             ShellHookManager shellHookManager = new ShellHookManager(forwardingWindowPtr);
