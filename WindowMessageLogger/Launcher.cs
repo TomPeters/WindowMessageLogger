@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Serilog;
 
 namespace WindowMessageLogger
 {
@@ -7,7 +8,11 @@ namespace WindowMessageLogger
     {
         static void Main(string[] args)
         {
-            HiddenForm form = new HiddenForm() { Visible = false, ShowInTaskbar = false };
+            ILogger logger = new LoggerConfiguration()
+                .WriteTo.ColoredConsole()
+                .WriteTo.Seq("http://localhost:5341")
+                .CreateLogger();
+            HiddenForm form = new HiddenForm(logger) { Visible = false, ShowInTaskbar = false };
             IntPtr forwardingWindowPtr = form.Handle;
             Console.WriteLine("Pointer: " + forwardingWindowPtr);
             ShellHookManager shellHookManager = new ShellHookManager(forwardingWindowPtr);
